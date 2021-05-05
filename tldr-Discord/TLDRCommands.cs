@@ -109,7 +109,7 @@ namespace tldr_Discord
             }
 
             var platfromPaths = Directory.GetDirectories(rootDir).Select(x => x.Split('/').LastOrDefault())
-                .Where(x => x != "common" || x != platformPref);
+                .Where(x => x != "common" && x != platformPref);
 
             foreach (var platfromPath in platfromPaths)
             {
