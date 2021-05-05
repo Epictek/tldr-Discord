@@ -9,5 +9,5 @@ A tldr pages bot for Discord that uses the new slash commands.
 ## Self Host Guide:
 1. Download latest binary from [releases](https://github.com/Epictek/tldr-Discord/releases).
 2. Use this guide for setting up a discord bot account. [Creating a bot account](https://dsharpplus.github.io/articles/basics/bot_account.html#creating-a-bot-account)
-3. [Get your bot token](https://dsharpplus.github.io/articles/basics/bot_account.html#get-bot-token) and put it inside the [appsettings.json](https://github.com/Epictek/tldr-Discord/blob/master/tldr-Discord/appsetting.json) file.
-4. Execute bot
+3. [Get your bot token](https://dsharpplus.github.io/articles/basics/bot_account.html#get-bot-token) and put it inside the [appsettings.json](https://github.com/Epictek/tldr-Discord/blob/master/tldr-Discord/appsetting.json) file, place this file in the same directory as the executable.
+4. run tldr-Discord 
