@@ -1,10 +1,8 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-static class Config
+internal static class Config
 {
-    public static IConfiguration AppSetting { get; }
-
     static Config()
     {
         AppSetting = new ConfigurationBuilder()
@@ -12,4 +10,6 @@ static class Config
             .AddJsonFile("appsettings.json")
             .Build();
     }
+
+    public static IConfiguration AppSetting { get; }
 }
