@@ -2,10 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ master ]
-  create:
     tags:
-      - v*
+      - "v*"
+
 jobs:
   build:
 
