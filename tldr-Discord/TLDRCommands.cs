@@ -20,6 +20,38 @@ namespace tldr_Discord
             HttpClient = httpClient;
         }
 
+        [SlashCommand("about", "about this bot")]
+        public async Task About(InteractionContext ctx)
+        {
+
+            var embed = new DiscordEmbedBuilder()
+                .WithTitle($"About)")
+                .WithAuthor("tldr pages", "https://tldr.sh/", "https://tldr.sh/assets/img/icon.png")
+                .WithColor(new DiscordColor("#54B59A"))
+                .WithDescription($"**What is tldr-pages?**\n The tldr-pages project is a collection of community-maintained help pages for command-line tools, that aims to be a simpler, more approachable complement to traditional man pages.")
+                .AddField("Bot Created By", "<@63306150757543936>")
+                .AddField("Git Repo", "https://github.com/Epictek/tldr-Discord")
+                .Build();
+            
+            await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DiscordInteractionResponseBuilder().AddEmbed(embed));
+
+        }
+        
+        
+        [SlashCommand("stats", "about this bot")]
+        public async Task Stats(InteractionContext ctx)
+        {
+            var embed = new DiscordEmbedBuilder()
+                .WithTitle($"About)")
+                .WithAuthor("tldr pages", "https://tldr.sh/", "https://tldr.sh/assets/img/icon.png")
+                .WithColor(new DiscordColor("#54B59A"))
+                .AddField("Servers", ctx.Client.Guilds.Count.ToString())
+                .Build();
+            
+            await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DiscordInteractionResponseBuilder().AddEmbed(embed));
+
+        }
+        
         [SlashCommand("tldr", "retrieve a TLDR for a command")]
         public async Task GetTLDR(InteractionContext ctx,
             [Option("page", "page to find")] string page,
@@ -75,7 +107,7 @@ namespace tldr_Discord
             var embed = new DiscordEmbedBuilder()
                 .WithTitle($"tldr page: {lines.FirstOrDefault()?.Remove(0, 2)} ({resultPlatform})")
                 .WithAuthor("tldr pages", "https://tldr.sh/", "https://tldr.sh/assets/img/icon.png")
-                .WithColor(new DiscordColor(0x478061))
+                .WithColor(new DiscordColor("#54B59A"))
                 .WithDescription(string.Join("\n", lines.Skip(1)).Replace("\n\n", "\n"))
                 .WithFooter("tldr - collaborative cheatsheets for console commands ",
                     "https://github.githubassets.com/images/icons/emoji/unicode/1f4da.png")
