@@ -38,10 +38,13 @@ namespace tldr_Discord
 
 
             slash.RegisterCommands<TLDRCommands>();
+            slash.RegisterCommands<TLDRCommands>(661595672016977931);//dev server
 
             slash.SlashCommandErrored += async (sender, eventArgs) =>
+            {
                 _discord.Logger.LogError(eventArgs.Exception.ToString());
-
+            };
+            
             _discord.Ready += (sender, eventArgs) =>
             {
                 _ = Task.Run(UpdateBotStatus);
@@ -59,14 +62,11 @@ namespace tldr_Discord
         {
             StatusTimer = new Timer(async _ =>
                 {
-                    var guilds = _discord.Guilds;
-                    
-                    using var proc = Process.GetCurrentProcess();
                     await _discord.UpdateStatusAsync(new DiscordActivity(
                         $"Servers: {_discord.Guilds.Count}"));
                 },
                 null,
-                TimeSpan.FromSeconds(1), //time to wait before executing the timer for the first time (set first status)
+                TimeSpan.FromSeconds(1),
                 TimeSpan.FromMinutes(3)
             );
         }
